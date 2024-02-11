@@ -1,16 +1,21 @@
-import UserLayout from '../user/layout/UserLayout';
-import Dashboard from "../user/dashboard";
+// import { Dashboard } from '../user/dashboard';
+import Dashboard from '../user/Dashboard';
+import UserLayout from '../user/layout';
+import { Profile } from '../user/Profile';
 
-
-const UserAuthenticationRoutes = {
+const UserRoutes = {
   path: '/',
   element: <UserLayout />,
   children: [
     {
       path: '/',
-      element: <Dashboard/>
+      element: <Dashboard />
+    },
+    {
+      path: '/profile',
+      element: <Profile />
     },
   ]
 };
 
-export default UserAuthenticationRoutes;
+export default UserRoutes;

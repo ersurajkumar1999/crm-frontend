@@ -1,9 +1,6 @@
-import React from 'react'
-
-function Index() {
-  return (
-    <div>Index</div>
-  )
+const Dashboard = () =>{
+    return (
+        <h1>Dashboard</h1>
+    )
 }
-
-export default Index
+export default Dashboard;
