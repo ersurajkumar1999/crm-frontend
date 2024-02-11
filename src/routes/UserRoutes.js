@@ -1,5 +1,5 @@
 // import { Dashboard } from '../user/dashboard';
-import Dashboard from '../user/Dashboard';
+// import Dashboard from '../user/Dashboard';
 import UserLayout from '../user/layout';
 import { Profile } from '../user/Profile';
 
@@ -9,7 +9,7 @@ const UserRoutes = {
   children: [
     {
       path: '/',
-      element: <Dashboard />
+      element: <Profile />
     },
     {
       path: '/profile',
