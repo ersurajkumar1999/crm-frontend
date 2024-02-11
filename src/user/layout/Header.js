@@ -10,7 +10,7 @@ import Box from '@mui/material/Box';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import AccountCircle from '@mui/icons-material/AccountCircle';
+// import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
@@ -19,7 +19,7 @@ import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 
-import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
+// import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 
 // const AppBar = styled(MuiAppBar, {
 //     shouldForwardProp: (prop) => prop !== 'open',
@@ -38,7 +38,7 @@ import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNone
 //     }),
 // }));
 
-const drawerWidth = 240;
+// const drawerWidth = 240;
 
 export const Header = ({ open, handleDrawerOpen }) => {
     const userAvatar = "https://avatars.githubusercontent.com/u/146355358?v=4";
