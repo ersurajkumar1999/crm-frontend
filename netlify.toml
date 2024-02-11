@@ -1,0 +1,11 @@
+# netlify.toml
+
+[build]
+  command = "npm run build"
+  publish = "build"
+
+# Redirects all paths to the index.html file
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
