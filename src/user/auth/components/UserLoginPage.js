@@ -1,13 +1,3 @@
-// import React from 'react'
-
-// function UserLoginPage() {
-//   return (
-//     <div>UserLoginPage</div>
-//   )
-// }
-
-// export default UserLoginPage
-
 import React from 'react'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
