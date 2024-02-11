@@ -1,13 +1,3 @@
-// import React from 'react'
-
-// function UserLoginPage() {
-//   return (
-//     <div>UserLoginPage</div>
-//   )
-// }
-
-// export default UserLoginPage
-
 import React from 'react'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -37,7 +27,7 @@ function Copyright(props) {
 }
 
 const theme = createTheme();
-function UserLoginPage() {
+function UserForgotPasswordPage() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -66,20 +56,11 @@ function UserLoginPage() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            User Login
+          User Forgot Password
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                />
-              </Grid>
+              
               <Grid item xs={12}>
                 <TextField
                   required
@@ -91,12 +72,7 @@ function UserLoginPage() {
                   autoComplete="new-password"
                 />
               </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="remember" color="primary" />}
-                  label="Remember me"
-                />
-              </Grid>
+              
             </Grid>
             <Button
               type="submit"
@@ -104,20 +80,8 @@ function UserLoginPage() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              Sign Link
             </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link to="/auth/forgot-password" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link to="/auth/signup" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
           </Box>
         </Box>
         <Copyright sx={{ mt: 5 }} />
@@ -126,4 +90,4 @@ function UserLoginPage() {
   )
 }
 
-export default UserLoginPage
+export default UserForgotPasswordPage;

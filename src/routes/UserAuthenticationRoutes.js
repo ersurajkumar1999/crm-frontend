@@ -1,5 +1,7 @@
 import UserAuthLayout from '../user/layout/UserAuthLayout';
 import UserLogin from '../user/auth/UserLogin';
+import UserSignup from '../user/auth/UserSignup';
+import UserForgotPassword from '../user/auth/UserForgotPassword';
 
 
 const UserAuthenticationRoutes = {
@@ -7,12 +9,24 @@ const UserAuthenticationRoutes = {
   element: <UserAuthLayout />,
   children: [
     {
-      path: '/login',
+      path: '/',
       element: <UserLogin />
     },
     {
-      path: '/register',
+      path: '/auth',
       element: <UserLogin />
+    },
+    {
+      path: '/auth/login',
+      element: <UserLogin />
+    },
+    {
+      path: '/auth/signup',
+      element: <UserSignup/>
+    },
+    {
+      path: '/auth/forgot-password',
+      element: <UserForgotPassword/>
     },
     {
       path: '/verify-account',
