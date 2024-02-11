@@ -1,4 +1,4 @@
-import UserAuthLayout from '../user/layout/UserAuthLayout';
+import UserAuthLayout from '../user/auth/layout/UserAuthLayout';
 import UserLogin from '../user/auth/UserLogin';
 import UserSignup from '../user/auth/UserSignup';
 import UserForgotPassword from '../user/auth/UserForgotPassword';
@@ -8,10 +8,10 @@ const UserAuthenticationRoutes = {
   path: '/',
   element: <UserAuthLayout />,
   children: [
-    {
-      path: '/',
-      element: <UserLogin />
-    },
+    // {
+    //   path: '/',
+    //   element: <UserLogin />
+    // },
     {
       path: '/auth',
       element: <UserLogin />

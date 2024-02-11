@@ -132,12 +132,12 @@ const UserLoginPage = () => {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              <Link to="/auth/forgot-password" variant="body2">
                 Forgot password?
               </Link>
             </Grid>
             <Grid item>
-              <Link to="/signup" component={Link} variant="body2">
+              <Link to="/auth/signup" component={Link} variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
