@@ -133,7 +133,12 @@ export const Header = ({ open, handleDrawerOpen }) => {
         >
 
             <MenuItem onClick={handleMenuClose}>
-                <Avatar />
+                {/* <Avatar /> */}
+                <Tooltip title="Open settings">
+                    <IconButton onClick={handleMenuClose} sx={{ p: 0 }}>
+                        <Avatar alt="Remy Sharp" src={userAvatar} />
+                    </IconButton>
+                </Tooltip>
                 <Typography noWrap component="div" sx={{ ml: 1 }}>
                     Profile
                 </Typography>
@@ -228,10 +233,10 @@ export const Header = ({ open, handleDrawerOpen }) => {
                         >
                             {/* <AccountCircle /> */}
                             <Tooltip title="Open settings">
-                    <IconButton onClick={handleMenuClose} sx={{ p: 0 }}>
-                        <Avatar alt="Remy Sharp" src={userAvatar} />
-                    </IconButton>
-                </Tooltip>
+                                <IconButton onClick={handleMenuClose} sx={{ p: 0 }}>
+                                    <Avatar alt="Remy Sharp" src={userAvatar} />
+                                </IconButton>
+                            </Tooltip>
                         </IconButton>
                     </Box>
                     <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
