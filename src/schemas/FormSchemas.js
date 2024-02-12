@@ -7,9 +7,11 @@ export const loginSchema = Yup.object({
 });
 
 export const signUpSchema = Yup.object({
-  name: Yup.string().min(2).max(50).required('Please enter your name'),
+  firstName: Yup.string().min(2).max(50).required('Please enter your first name'),
+  lastName: Yup.string().min(2).max(50).required('Please enter your last name'),
   email: Yup.string().email().required('Please enter your email'),
   password: Yup.string().min(6).required('Please enter your password'),
+  allowExtraEmails: Yup.boolean().oneOf([true], 'You must agree to receive emails').required('You must agree to receive emails'),
 });
 
 export const forgotPasswordSchema = Yup.object({

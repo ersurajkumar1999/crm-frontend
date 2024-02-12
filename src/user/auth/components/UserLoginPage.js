@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -15,8 +15,13 @@ import { loginSchema } from '../../../schemas/FormSchemas';
 import { Avatar } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { userLogin } from '../../../services/ApiService';
+import { ErrorMessage, SuccessMessage } from '../../../components/common/AlertMessages';
 
 const UserLoginPage = () => {
+  const [alertMessages, setAlertMessages] = useState({
+    error: null,
+    success: null
+  });
   const initialValues = {
     email: "spandev23@gmail.com",
     password: "spandev23@",
@@ -27,9 +32,8 @@ const UserLoginPage = () => {
     handleBlur,
     handleChange,
     handleSubmit,
-    touched,
-    isSubmitting, // Capture isSubmitting from useFormik
-    values,
+    touched, isSubmitting,
+    values, resetForm
   } = useFormik({
     initialValues,
     validationSchema: loginSchema,
@@ -42,18 +46,23 @@ const UserLoginPage = () => {
       try {
         // Start submitting
         setSubmitting(true);
-        const userInfo = await userLogin(data);
-        console.log("data==>", userInfo);
-        // Proceed with form submission...
+        const response = await userLogin(data);
+        if (response.status) {
+          console.log("statusstatusstatusstatus", response);
+          setAlertMessages({ error: null, success: response.data.message });
+          resetForm();
+        } else {
+          setAlertMessages({ error: response?.data?.message, success: null });
+        }
       } catch (error) {
-        console.error("Login error:", error);
+        setAlertMessages({ error: error, success: null });
       } finally {
         // Finish submitting
         setSubmitting(false);
       }
     },
   });
-
+  const handleClearErrorMessage = () => setAlertMessages({ error: null, success: null });
   return (
     <Container component="main" maxWidth="sm">
       <Box
@@ -74,6 +83,12 @@ const UserLoginPage = () => {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
+        {alertMessages.error && (
+          <ErrorMessage message={alertMessages.error} handlonCloseeMessage={handleClearErrorMessage} />
+        )}
+        {alertMessages.success && (
+          <SuccessMessage message={alertMessages.success} handlonCloseeMessage={handleClearErrorMessage} />
+        )}
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
             id="outlined-adornment-email-login"

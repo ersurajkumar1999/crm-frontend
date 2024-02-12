@@ -2,7 +2,6 @@ import React from 'react';
 import { Grid, Typography } from '@mui/material';
 
 const ChatHome = () => {
-
     return (
         <>
             <Grid container>

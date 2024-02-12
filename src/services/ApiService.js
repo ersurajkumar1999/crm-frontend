@@ -10,14 +10,26 @@ let service = axios.create({
 });
 
 export const userLogin = async (data) => {
-    console.log("BASE_URLBASE_URL",BASE_URL);
-
-    try {
-        const response = await service.post(`/auth/login`, data);
-        return response;
-        // return resultResponse(response);
-      } catch (error) {
-        return error;
-        // return resultFieldResponse(error);
-      }
+  try {
+    const response = await service.post(`/auth/login`, data);
+    return response;
+    // return resultResponse(response);
+  } catch (error) {
+    const message = {
+      message: error?.message
+    }
+    return { status: false, data: error?.response?.data ?? message };
+  }
+}
+export const userSignUp = async (data) => {
+  try {
+    const response = await service.post(`/auth/signup`, data);
+    return response;
+    // return resultResponse(response);
+  } catch (error) {
+    const message = {
+      message: error?.message
+    }
+    return { status: false, data: error?.response?.data ?? message };
+  }
 }
