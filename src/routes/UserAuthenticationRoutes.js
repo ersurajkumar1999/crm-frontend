@@ -2,11 +2,12 @@ import UserAuthLayout from '../user/auth/layout/UserAuthLayout';
 import UserLogin from '../user/auth/UserLogin';
 import UserSignup from '../user/auth/UserSignup';
 import UserForgotPassword from '../user/auth/UserForgotPassword';
+import { AuthContextProvider } from '../contexts/AuthContext';
 
 
 const UserAuthenticationRoutes = {
   path: '/',
-  element: <UserAuthLayout />,
+  element: <AuthContextProvider> <UserAuthLayout /></AuthContextProvider>,
   children: [
     // {
     //   path: '/',
@@ -22,11 +23,11 @@ const UserAuthenticationRoutes = {
     },
     {
       path: '/auth/signup',
-      element: <UserSignup/>
+      element: <UserSignup />
     },
     {
       path: '/auth/forgot-password',
-      element: <UserForgotPassword/>
+      element: <UserForgotPassword />
     },
     {
       path: '/verify-account',

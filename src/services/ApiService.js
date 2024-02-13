@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { BASE_URL } from './config';
+import { successResponse } from './ApiResponse';
 // import { AuthApiService } from './AuthApiService';
 let service = axios.create({
   baseURL: BASE_URL,
@@ -12,8 +13,7 @@ let service = axios.create({
 export const userLogin = async (data) => {
   try {
     const response = await service.post(`/auth/login`, data);
-    return response;
-    // return resultResponse(response);
+    return successResponse(response);
   } catch (error) {
     const message = {
       message: error?.message

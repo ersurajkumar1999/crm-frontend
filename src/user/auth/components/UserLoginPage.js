@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -16,15 +16,20 @@ import { Avatar } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { userLogin } from '../../../services/ApiService';
 import { ErrorMessage, SuccessMessage } from '../../../components/common/AlertMessages';
+import { AuthContext } from '../../../contexts/AuthContext';
 
 const UserLoginPage = () => {
+  const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
+
+  
   const [alertMessages, setAlertMessages] = useState({
     error: null,
     success: null
   });
   const initialValues = {
-    email: "spandev23@gmail.com",
-    password: "spandev23@",
+    email: "suraj1999@gmail.com",
+    password: "suraj1999@",
     rememberMe: false,
   };
   const {
@@ -48,7 +53,9 @@ const UserLoginPage = () => {
         setSubmitting(true);
         const response = await userLogin(data);
         if (response.status) {
-          console.log("statusstatusstatusstatus", response);
+          console.log("statusstatusstatusstatus", response.data.data);
+          login(response.data.data);
+          navigate('/profile');
           setAlertMessages({ error: null, success: response.data.message });
           resetForm();
         } else {
