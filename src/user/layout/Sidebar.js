@@ -30,6 +30,7 @@ export const Sidebar = ({ open, handleDrawerClose }) => {
     const routes = [
         { name: 'Dashboard', slug: '/', icon: <DashboardIcon /> },
         { name: 'Profile', slug: 'profile', icon: <AccountCircleIcon /> },
+        { name: 'Feed', slug: 'feed', icon: <AccountCircleIcon /> },
         { name: 'chat', slug: 'chat', icon: <LogoutIcon /> },
         // { name: 'Logout', slug: 'logout', icon: <LogoutIcon /> },
     ];
