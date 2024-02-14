@@ -1,18 +1,17 @@
 import axios from 'axios';
 import { BASE_URL } from './config';
 import { successResponse } from './ApiResponse';
-// import { AuthApiService } from './AuthApiService';
+import { AUTH_LOGIN, AUTH_SIGNUP } from './API_ENDPOINTS';
 let service = axios.create({
   baseURL: BASE_URL,
   headers: {
-    // Authorization: `Bearer ${AuthApiService.getToken()}`,
     'Content-Type': 'application/json'
   }
 });
 
-export const userLogin = async (data) => {
+const userLogin = async (data) => {
   try {
-    const response = await service.post(`/auth/login`, data);
+    const response = await service.post(AUTH_LOGIN, data);
     return successResponse(response);
   } catch (error) {
     const message = {
@@ -21,11 +20,10 @@ export const userLogin = async (data) => {
     return { status: false, data: error?.response?.data ?? message };
   }
 }
-export const userSignUp = async (data) => {
+const userSignUp = async (data) => {
   try {
-    const response = await service.post(`/auth/signup`, data);
-    return response;
-    // return resultResponse(response);
+    const response = await service.post(AUTH_SIGNUP, data);
+    return successResponse(response);
   } catch (error) {
     const message = {
       message: error?.message
@@ -33,3 +31,4 @@ export const userSignUp = async (data) => {
     return { status: false, data: error?.response?.data ?? message };
   }
 }
+export { userLogin, userSignUp }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import { Avatar, Card, CardMedia, CardContent, Typography, Grid, Button, IconButton, Tabs, Tab, Accordion, AccordionSummary, AccordionDetails, Box } from '@mui/material';
 import { PhotoCamera } from '@mui/icons-material';
+import AboutSection from './AboutSection';
 
 // import { IconLayoutNavbarExpand, IconInfoCircle } from '@tabler/icons';
 
@@ -218,7 +219,7 @@ const ProfilePage = () => {
           <Card>
             <StyledCardContent>
               <Tabs value={selectedTab} onChange={handleTabChange} aria-label="profile tabs" variant="fullWidth">
-                <Tab label="Posts" />
+                <Tab label="About" />
                 <Tab label="Reels" />
                 <Tab label="Saved" />
                 <Tab label="photos" />
@@ -226,9 +227,7 @@ const ProfilePage = () => {
                 {/* Add more tabs here for additional sections */}
               </Tabs>
               {selectedTab === 0 && (
-                <Typography variant="body1">
-                  This is the Posts section.
-                </Typography>
+                <AboutSection />
               )}
               {selectedTab === 1 && (
                 <Typography variant="body1">
