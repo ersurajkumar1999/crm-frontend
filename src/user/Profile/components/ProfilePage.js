@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
-import { Avatar, Card, CardMedia, CardContent, Typography, Grid, Button, IconButton, Tabs, Tab } from '@mui/material';
+import { Avatar, Card, CardMedia, CardContent, Typography, Grid, Button, IconButton, Tabs, Tab, Accordion, AccordionSummary, AccordionDetails, Box } from '@mui/material';
 import { PhotoCamera } from '@mui/icons-material';
+
+// import { IconLayoutNavbarExpand, IconInfoCircle } from '@tabler/icons';
 
 const StyledCoverPhoto = styled(CardMedia)({
   height: 200,
@@ -120,27 +122,107 @@ const ProfilePage = () => {
       </Grid>
       <Grid container justifyContent="center" sx={{ mt: 4 }}>
         <Grid item xs={12} sm={4}>
-          <Card>
-            <Typography variant="h6" gutterBottom>
-              John Doe
-            </Typography>
-            <Typography variant="subtitle1" gutterBottom>
-              Software Engineer at XYZ Company
-            </Typography>
-            <Button variant="contained" color="primary" fullWidth>
-              Edit Profile
-            </Button>
-          </Card>
+          <Accordion elevation={1} sx={{ mb: 2 }}>
+            <AccordionSummary sx={{ borderBottom: 1, borderColor: 'divider' }}
+              expandIcon={<PhotoCamera />}
+              aria-controls="panel1-content"
+              id="panel1-header"
+            >
+              <Typography variant="h6">Overview</Typography>
+            </AccordionSummary>
+            <AccordionDetails sx={{ backgroundColor: '#f5f5f5' }}>
+              <Box sx={{ m: 2 }}>
+              <Typography variant="h6">EXTRA HOTEL IMAGES</Typography>
+                
+              </Box>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion elevation={1} sx={{ mb: 2 }}>
+            <AccordionSummary sx={{ borderBottom: 1, borderColor: 'divider' }}
+              expandIcon={<PhotoCamera />}
+              aria-controls="panel2-content"
+              id="panel2-header"
+            >
+              <Typography variant="h6">Contact info</Typography>
+            </AccordionSummary>
+            <AccordionDetails sx={{ backgroundColor: '#f5f5f5' }}>
+              <Box sx={{ m: 2 }}>
+              <Typography variant="h6">EXTRA HOTEL IMAGES</Typography>
+                
+              </Box>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion elevation={1} sx={{ mb: 2 }}>
+            <AccordionSummary sx={{ borderBottom: 1, borderColor: 'divider' }}
+              expandIcon={<PhotoCamera />}
+              aria-controls="panel2-content"
+              id="panel2-header"
+            >
+              <Typography variant="h6">Work And Education</Typography>
+            </AccordionSummary>
+            <AccordionDetails sx={{ backgroundColor: '#f5f5f5' }}>
+              <Box sx={{ m: 2 }}>
+              <Typography variant="h6">EXTRA HOTEL IMAGES</Typography>
+                
+              </Box>
+            </AccordionDetails>
+          </Accordion>
+          
+          <Accordion elevation={1} sx={{ mb: 2 }}>
+            <AccordionSummary sx={{ borderBottom: 1, borderColor: 'divider' }}
+              expandIcon={<PhotoCamera />}
+              aria-controls="panel2-content"
+              id="panel2-header"
+            >
+              <Typography variant="h6">Websites and social links</Typography>
+            </AccordionSummary>
+            <AccordionDetails sx={{ backgroundColor: '#f5f5f5' }}>
+              <Box sx={{ m: 2 }}>
+              <Typography variant="h6">EXTRA HOTEL IMAGES</Typography>
+                
+              </Box>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion elevation={1} sx={{ mb: 2 }}>
+            <AccordionSummary sx={{ borderBottom: 1, borderColor: 'divider' }}
+              expandIcon={<PhotoCamera />}
+              aria-controls="panel2-content"
+              id="panel2-header"
+            >
+              <Typography variant="h6">Work And Education</Typography>
+            </AccordionSummary>
+            <AccordionDetails sx={{ backgroundColor: '#f5f5f5' }}>
+              <Box sx={{ m: 2 }}>
+              <Typography variant="h6">EXTRA HOTEL IMAGES</Typography>
+                
+              </Box>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion elevation={1} sx={{ mb: 2 }}>
+            <AccordionSummary sx={{ borderBottom: 1, borderColor: 'divider' }}
+              expandIcon={<PhotoCamera />}
+              aria-controls="panel2-content"
+              id="panel2-header"
+            >
+              <Typography variant="h6">Address Information</Typography>
+            </AccordionSummary>
+            <AccordionDetails sx={{ backgroundColor: '#f5f5f5' }}>
+              <Box sx={{ m: 2 }}>
+              <Typography variant="h6">EXTRA HOTEL IMAGES</Typography>
+                
+              </Box>
+            </AccordionDetails>
+          </Accordion>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Card>
             <StyledCardContent>
               <Tabs value={selectedTab} onChange={handleTabChange} aria-label="profile tabs" variant="fullWidth">
                 <Tab label="Posts" />
-                <Tab label="About" />
-                <Tab label="Posts" />
-                <Tab label="About" />
-                
+                <Tab label="Reels" />
+                <Tab label="Saved" />
+                <Tab label="photos" />
+
                 {/* Add more tabs here for additional sections */}
               </Tabs>
               {selectedTab === 0 && (

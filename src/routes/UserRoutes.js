@@ -24,9 +24,12 @@ const UserRoutes = {
   element: <AuthContextProvider> <UserLayout /></AuthContextProvider>,
   children: [
     { path: '/', element: <Profile /> },// Profile route protected
-    { path: '/profile', element: <ProtectedRoute element={<Profile />} /> }, // Profile route protected
-    { path: '/feed', element: <ProtectedRoute element={<Feed />} /> }, // Feed route protected
-    { path: '/chat', element: <ProtectedRoute element={<ChatHome />} /> }, // Chat route protected
+    { path: '/profile', element: <Profile /> }, // Profile route protected
+    { path: '/feed', element: <Feed /> }, // Feed route protected
+    { path: '/chat', element: <ChatHome /> }, // Chat route protected
+    // { path: '/profile', element: <ProtectedRoute element={<Profile />} /> }, // Profile route protected
+    // { path: '/feed', element: <ProtectedRoute element={<Feed />} /> }, // Feed route protected
+    // { path: '/chat', element: <ProtectedRoute element={<ChatHome />} /> }, // Chat route protected
     { path: '*', element: <ProtectedRoute element={<Navigate to="/auth/login" />} /> } // Catch-all route protected
   ]
 };
