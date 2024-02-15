@@ -1,5 +1,4 @@
-import { Card, CardContent, Grid, Typography } from "@mui/material"
-
+import { Grid, CardContent, Card, Typography } from "../../../librarys/MUILibrary";
 const AboutSection = () => {
     return (
         <Grid container spacing={3}>
@@ -9,20 +8,13 @@ const AboutSection = () => {
                         <Typography variant="h5" component="h2">
                             Basic Information
                         </Typography>
-                        <Grid item xs={6} sm={6} md={6}>
-                            <Typography color="textSecondary">
-                                This is the content of card 2.
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={6} sm={6} md={6}>
-                            <Typography color="textSecondary">
-                                This is the content of card 2.
-                            </Typography>
-                        </Grid>
+                        <Typography color="textSecondary">
+                            Name:Suraj
+                        </Typography>
                     </CardContent>
                 </Card>
             </Grid>
         </Grid>
     )
 }
-export default AboutSection
+export default AboutSection;
