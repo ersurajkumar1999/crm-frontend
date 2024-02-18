@@ -1,3 +1,9 @@
-import { Card, CardContent, Grid, Typography } from "@mui/material"
+import {
+    Avatar, Card, CardMedia, CardContent, Typography, Grid, Button, IconButton, Tabs,
+    Tab, Accordion, AccordionSummary, AccordionDetails, Box
+} from '@mui/material';
 
-export { Card, CardContent, Grid, Typography }
+export {
+    Avatar, Card, CardMedia, CardContent, Typography, Grid, Button, IconButton, Tabs,
+    Tab, Accordion, AccordionSummary, AccordionDetails, Box
+}

@@ -1,21 +1,4 @@
-// import React from 'react';
-// import { Grid, Typography } from '@mui/material';
-
-// const Feed = () => {
-//     return (
-//         <>
-//             <Grid container>
-//                 <Grid item xs={12} >
-//                     <Typography variant="h5" className="header-message">Feed</Typography>
-//                 </Grid>
-//             </Grid>
-//         </>
-//     );
-// }
-
-// export default Feed;
-
-import { Box, Stack, Skeleton } from "@mui/material";
+import { Box, Stack, Skeleton, Grid } from "@mui/material";
 import React, { useState } from "react";
 import Post from "./Post";
 import Rightbar from "./Rightbar";
@@ -29,25 +12,34 @@ const Feed = () => {
 
     return (
         <>
-            <Box flex={4} p={{ xs: 0, md: 2 }}>
-                {loading ? (
-                    <Stack spacing={1}>
-                        <Skeleton variant="text" height={100} />
-                        <Skeleton variant="text" height={20} />
-                        <Skeleton variant="text" height={20} />
-                        <Skeleton variant="rectangular" height={300} />
-                    </Stack>
-                ) : (
-                    <>
-                        <Post />
-                        <Post />
-                        <Post />
-                        <Post />
-                        <Post />
-                        <Post />
-                    </>
-                )}
-            </Box>
+            <Grid container spacing={3}>
+                <Grid item xs={12} sm={6} md={3}>
+                    <Box >
+                        {loading ? (
+                            <Stack spacing={1}>
+                                <Skeleton variant="text" height={100} />
+                                <Skeleton variant="text" height={20} />
+                                <Skeleton variant="text" height={20} />
+                                <Skeleton variant="rectangular" height={300} />
+                            </Stack>
+                        ) : (
+                            <>
+                                <Post />
+                                <Post />
+                                <Post />
+                                <Post />
+                                <Post />
+                                <Post />
+                                <Post />
+                                <Post />
+                                <Post />
+                                <Post />
+                            </>
+                        )}
+                    </Box>
+                </Grid>
+            </Grid>
+
             <Rightbar />
         </>
     );
