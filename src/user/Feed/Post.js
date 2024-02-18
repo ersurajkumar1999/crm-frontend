@@ -10,7 +10,7 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
-import { Favorite, FavoriteBorder, MoreVert, Share, ChatBubbleOutline } from "@mui/icons-material";
+import {MoreVert} from "@mui/icons-material";
 
 import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined';
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
