@@ -7,7 +7,10 @@ const AuthContextProvider = ({ children }) => {
     // Initialize the state with user data if available in localStorage
     const storedUserData = JSON.parse(localStorage.getItem('crm'));
     const [user, setUser] = useState(storedUserData || null);
-
+    const [userProfile, setUserProfile] = useState(null);
+    const setProfileData = (profileData) => {
+        setUserProfile(profileData);
+    }
     const login = (userData) => {
         const loggedInUser = {
             isLoggedIn: true,
@@ -29,7 +32,7 @@ const AuthContextProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ user, login, logout, setProfileData, userProfile}}>
             {children}
         </AuthContext.Provider>
     );

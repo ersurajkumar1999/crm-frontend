@@ -1,7 +1,7 @@
 import { styled } from "../../../librarys/MUIStyles";
 import { CardContent, Grid, Typography, Avatar } from "../../../librarys/MUILibrary";
 
-const ProfileInformation = () => {
+const ProfileInformation = ({userProfile}) => {
     const StyledCardContent = styled(CardContent)({
         marginTop: 20,
     });
@@ -24,7 +24,7 @@ const ProfileInformation = () => {
                     />
                     <Grid item>
                         <Typography variant="h4" gutterBottom>
-                            John Doe
+                            {userProfile.username}
                         </Typography>
                         <Typography variant="subtitle1" gutterBottom>
                             Software Engineer at XYZ Company
