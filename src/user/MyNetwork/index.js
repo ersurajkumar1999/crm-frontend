@@ -32,18 +32,19 @@ const MyNetwork = () => {
         page: 1,
         pageSize: 10,
     });
-    const userSearching = async () => {
-        // setIsLoading(true)
-        try {
-            const { data } = await getUserList({ page: state.page, pageSize: state.pageSize });
-            console.log("data==>", data.data);
-            setUsers(data)
-        } catch (error) {
-            console.log("error==>", error);
-        }
-        // setIsLoading(false)
-    }
+    
     useEffect(() => {
+        const userSearching = async () => {
+            // setIsLoading(true)
+            try {
+                const { data } = await getUserList({ page: state.page, pageSize: state.pageSize });
+                console.log("data==>", data.data);
+                setUsers(data)
+            } catch (error) {
+                console.log("error==>", error);
+            }
+            // setIsLoading(false)
+        }
         userSearching();
     }, [state.page])
     

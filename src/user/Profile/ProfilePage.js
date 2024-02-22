@@ -11,24 +11,23 @@ import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
 const ProfilePage = () => {
     const { userProfile, setProfileData } = useContext(AuthContext);
-    console.log("userProfile==>", userProfile);
 
     useEffect(() => {
         if (!userProfile) {
+            const getUserProfile = async () => {
+                try {
+                    const profile = await getProfile();
+                    console.log("profile==>", profile);
+                    setProfileData(profile.data.data);
+                } catch (error) {
+                    console.log("error===>", error);
+                }
+            }
             getUserProfile();
         }
     }, [userProfile]);
 
-    const getUserProfile = async () => {
-        try {
-            const profile = await getProfile();
-            console.log("profile==>", profile);
-            setProfileData(profile.data.data);
-        } catch (error) {
-            console.log("error===>", error);
-        }
-    }
-    console.log("userProfile==>", userProfile);
+
     return (
         <>
             <Grid container justifyContent="center">
@@ -37,7 +36,7 @@ const ProfilePage = () => {
                         <CoverPhoto />
                         {
                             userProfile ? (
-                                <ProfileInformation userProfile={userProfile}/>
+                                <ProfileInformation userProfile={userProfile} />
                             ) : (
                                 <Grid container alignItems="center">
                                     <Stack spacing={1} sx={{ width: '100%' }}>

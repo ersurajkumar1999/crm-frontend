@@ -13,26 +13,25 @@ const ChatHome = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [search, setSearch] = useState("")
 
-    const userSearching = async () => {
-        setIsLoading(true)
-        try {
-            const { data } = await searchUsers({ search });
-            console.log("data==>", data);
-            setSearchResults(data)
-        } catch (error) {
 
-        }
-        setIsLoading(false)
-    }
     const handleSearchUser = (event) => {
         const { value } = event.target;
         setSearch(value);
     }
 
     useEffect(() => {
-        // if (search) {
-            userSearching();
-        // }
+        const userSearching = async () => {
+            setIsLoading(true)
+            try {
+                const { data } = await searchUsers({ search });
+                console.log("data==>", data);
+                setSearchResults(data)
+            } catch (error) {
+
+            }
+            setIsLoading(false)
+        }
+        userSearching();
     }, [search])
     return (
         <>
@@ -45,7 +44,7 @@ const ChatHome = () => {
                                 search ? (
                                     <SearchResult searchResults={searchResults} isLoading={isLoading} />
                                 ) : (
-                                    <UserList searchResults={searchResults}/>
+                                    <UserList searchResults={searchResults} />
                                 )
                             }
                         </CardContent>
