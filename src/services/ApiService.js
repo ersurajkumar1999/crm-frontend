@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { BASE_URL } from './config';
 import { successResponse } from './ApiResponse';
-import { AUTH_LOGIN, AUTH_SIGNUP, PROFILE } from './API_ENDPOINTS';
+import { AUTH_LOGIN, AUTH_SIGNUP } from './API_ENDPOINTS';
 let service = axios.create({
   baseURL: BASE_URL,
   headers: {

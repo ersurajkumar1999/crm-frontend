@@ -1,6 +1,7 @@
 export const getUserToken = () => {
     const user = JSON.parse(localStorage.getItem('crm'));
-    const userToken = user?.userToken// return userToken with Bearer
+    const userToken = user?.userToken?? null// return userToken with Bearer
+
     return userToken;
 }
 
