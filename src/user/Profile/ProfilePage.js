@@ -25,7 +25,7 @@ const ProfilePage = () => {
             }
             getUserProfile();
         }
-    }, [userProfile]);
+    }, [userProfile, setProfileData]);
 
 
     return (

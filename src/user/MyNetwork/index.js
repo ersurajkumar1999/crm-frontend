@@ -32,69 +32,66 @@ const MyNetwork = () => {
         page: 1,
         pageSize: 10,
     });
-    
+
     useEffect(() => {
         const userSearching = async () => {
-            // setIsLoading(true)
             try {
                 const { data } = await getUserList({ page: state.page, pageSize: state.pageSize });
                 console.log("data==>", data.data);
-                setUsers(data)
+                setUsers(data);
             } catch (error) {
                 console.log("error==>", error);
             }
-            // setIsLoading(false)
-        }
+        };
+
         userSearching();
-    }, [state.page])
-    
+    }, [state.page, state.pageSize, setUsers]);
+
     return (
-        <>
-            <Grid container spacing={3}>
-                <Grid item xs={12} sm={6} md={4}>
-                    <ConnectionInformation setState={setState}/>
-                </Grid>
-                <Grid item xs={12} sm={6} md={8}>
-                    <Grid container spacing={3}>
-                        {
-                            users.length > 0 && users.map((user) => (
-                                <Grid key={user._id} item xs={12} sm={6} md={4}>
-                                    <Card>
-                                        <StyledAvatarContainer>
-                                            <StyledCardUp />
-                                            <CardHeader
-                                                action={
-                                                    <IconButton sx={{ marginTop: '-120px', backgroundColor: '#623e09', color: 'white' }}>
-                                                        <CloseIcon color={"red"} />
-                                                    </IconButton>
-                                                }
-                                            />
-                                            <Avatar sx={{ width: 150, height: 150, margin: 'auto', border: '2px solid #fff', marginTop: '-100px', zIndex: '11' }}>
-                                                <Avatar sx={{ height: '100%', width: '100%' }} src="https://avatars.githubusercontent.com/u/146355358?v=4" alt="woman avatar" />
-                                            </Avatar>
-                                            <CardContent>
-                                                <Typography variant="h6" component="h6" >
-                                                    {user.name}
-                                                </Typography>
-                                                <Typography variant="body1">
-                                                    Lorem ipsum dolor sit amet,
-                                                </Typography>
-                                            </CardContent>
-                                            <CardActions>
-                                                <Button size="small" sx={{ width: '50%' }} variant="contained"><PersonAddIcon /> Connect</Button>
-                                                <Button size="small" sx={{ width: '50%' }} variant="outlined" ><AddIcon /> Connect</Button>
-                                            </CardActions>
-                                        </StyledAvatarContainer>
-                                    </Card>
-                                </Grid>
-                            ))
-                        }
-
-                    </Grid>
-
-                </Grid>
+        <Grid container spacing={3}>
+            <Grid item xs={12} sm={6} md={4}>
+                <ConnectionInformation setState={setState} />
             </Grid>
-        </>
+            <Grid item xs={12} sm={6} md={8}>
+                <Grid container spacing={3}>
+                    {
+                        users.length > 0 && users.map((user) => (
+                            <Grid key={user._id} item xs={12} sm={6} md={4}>
+                                <Card>
+                                    <StyledAvatarContainer>
+                                        <StyledCardUp />
+                                        <CardHeader
+                                            action={
+                                                <IconButton sx={{ marginTop: '-120px', backgroundColor: '#623e09', color: 'white' }}>
+                                                    <CloseIcon color={"red"} />
+                                                </IconButton>
+                                            }
+                                        />
+                                        <Avatar sx={{ width: 150, height: 150, margin: 'auto', border: '2px solid #fff', marginTop: '-100px', zIndex: '11' }}>
+                                            <Avatar sx={{ height: '100%', width: '100%' }} src="https://avatars.githubusercontent.com/u/146355358?v=4" alt="woman avatar" />
+                                        </Avatar>
+                                        <CardContent>
+                                            <Typography variant="h6" component="h6" >
+                                                {user.name}
+                                            </Typography>
+                                            <Typography variant="body1">
+                                                Lorem ipsum dolor sit amet,
+                                            </Typography>
+                                        </CardContent>
+                                        <CardActions>
+                                            <Button size="small" sx={{ width: '50%' }} variant="contained"><PersonAddIcon /> Connect</Button>
+                                            <Button size="small" sx={{ width: '50%' }} variant="outlined" ><AddIcon /> Connect</Button>
+                                        </CardActions>
+                                    </StyledAvatarContainer>
+                                </Card>
+                            </Grid>
+                        ))
+                    }
+
+                </Grid>
+
+            </Grid>
+        </Grid>
     )
 }
 export default MyNetwork;
