@@ -1,29 +1,22 @@
 import React from 'react';
+import { Navigate, } from 'react-router-dom';
 import ChatHome from '../user/Chat';
 import Feed from '../user/Feed';
 import UserLayout from '../user/layout';
 import { AuthContextProvider } from '../contexts/AuthContext';
+import ProtectedRoute from './ProtectedRoute';
 import ProfilePage from '../user/Profile/ProfilePage';
-import MyNetwork from '../user/MyNetwork';
-import Logout from '../user/Logout';
-import Page404 from '../user/error/Page404';
-import MyConnections from '../user/MyConnections';
-import ManagerInvitation from '../user/ManagerInvitation';
 
 
 const UserRoutes = {
   path: '/',
   element: <AuthContextProvider> <UserLayout /></AuthContextProvider>,
   children: [
-    { path: '/', element: <Feed /> },
-    { path: 'my-network', element: <MyNetwork /> },
-    { path: 'feed', element: <Feed /> },
-    { path: 'chat', element: <ChatHome /> },
-    { path: 'profile', element: <ProfilePage /> },
-    { path: 'logout', element: <Logout /> },
-    { path: 'connections', element: <MyConnections /> },
-    { path: 'invitation-manager', element: <ManagerInvitation /> },
-    { path: '*', element: <Page404 /> },
+    { path: '/', element: <ProtectedRoute element={<ProfilePage />} /> },
+    { path: '/profile', element: <ProtectedRoute element={<ProfilePage />} /> },
+    { path: '/feed', element: <ProtectedRoute element={<Feed />} /> },
+    { path: '/chat', element: <ProtectedRoute element={<ChatHome />} /> },
+    { path: '*', element: <ProtectedRoute element={<Navigate to="/auth/login" />} /> } // Catch-all route protected
   ]
 };
 

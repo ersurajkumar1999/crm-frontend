@@ -9,12 +9,11 @@ import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
-import Diversity3Icon from '@mui/icons-material/Diversity3';
-import Diversity1Icon from '@mui/icons-material/Diversity1';
-import ChatIcon from '@mui/icons-material/Chat';
 import { Link } from 'react-router-dom';
 const drawerWidth = 240;
 const DrawerHeader = styled('div')(({ theme }) => ({
@@ -30,14 +29,11 @@ export const Sidebar = ({ open, handleDrawerClose }) => {
     const theme = useTheme();
     const routes = [
         { name: 'Dashboard', slug: '/', icon: <DashboardIcon /> },
-        { name: 'MyNetwork', slug: 'my-network', icon: <Diversity3Icon /> },
-        { name: 'Feed', slug: 'feed', icon: <Diversity1Icon /> },
-        { name: 'chat', slug: 'chat', icon: <ChatIcon /> },
-    ];
-    const otherroutes = [
         { name: 'Profile', slug: 'profile', icon: <AccountCircleIcon /> },
-        { name: 'Logout', slug: 'logout', icon: <LogoutIcon /> },
-    ]
+        { name: 'Feed', slug: 'feed', icon: <AccountCircleIcon /> },
+        { name: 'chat', slug: 'chat', icon: <LogoutIcon /> },
+        // { name: 'Logout', slug: 'logout', icon: <LogoutIcon /> },
+    ];
     return (
         <Drawer
             sx={{
@@ -88,27 +84,13 @@ export const Sidebar = ({ open, handleDrawerClose }) => {
             </List>
             <Divider />
             <List>
-                {otherroutes.map((route, index) => (
-                    <ListItem disablePadding key={route.slug}>
-                        <ListItemButton
-                            component={Link}
-                            to={route.slug}
-                            sx={{
-                                minHeight: 48,
-                                justifyContent: open ? 'initial' : 'center',
-                                px: 2.5,
-                            }}
-                        >
-                            <ListItemIcon
-                                sx={{
-                                    minWidth: 0,
-                                    mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
-                                }}
-                            >
-                                {route.icon}
+                {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                    <ListItem key={text} disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                             </ListItemIcon>
-                            <ListItemText primary={route.name} sx={{ opacity: open ? 1 : 0 }} />
+                            <ListItemText primary={text} />
                         </ListItemButton>
                     </ListItem>
                 ))}
