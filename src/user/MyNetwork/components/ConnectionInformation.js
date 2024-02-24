@@ -9,6 +9,8 @@ import SendIcon from '@mui/icons-material/Send';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import StarBorder from '@mui/icons-material/StarBorder';
+
+import { Link } from 'react-router-dom';
 const ConnectionInformation = () => {
   const [open, setOpen] = React.useState(true);
 
@@ -20,7 +22,9 @@ const ConnectionInformation = () => {
       <Card >
         <List>
           <CardHeader title="Manage my network" />
-          <ListItemButton>
+          <ListItemButton
+            component={Link}
+            to={"/connections"}>
             <ListItemIcon>
               <SendIcon />
             </ListItemIcon>
