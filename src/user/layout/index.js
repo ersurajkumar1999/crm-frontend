@@ -1,10 +1,11 @@
-import { Outlet } from 'react-router-dom';
-import * as React from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import { Box, CssBaseline } from '@mui/material';
 
 import { Header } from './Header';
 import { Sidebar } from './Sidebar';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const drawerWidth = 240;
 
@@ -39,9 +40,10 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 function UserLayout() {
+    const navigate = useNavigate();
+    const { user } = useContext(AuthContext);
 
-
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -50,7 +52,12 @@ function UserLayout() {
     const handleDrawerClose = () => {
         setOpen(false);
     };
-
+    useEffect(() => {
+        if (!user?.isLoggedIn) {
+            navigate('/auth/login')
+            console.log("user auto logout");
+        }
+    }, [user])
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
