@@ -57,7 +57,7 @@ function UserLayout() {
             navigate('/auth/login')
             console.log("user auto logout");
         }
-    }, [user])
+    }, [user, navigate])
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
