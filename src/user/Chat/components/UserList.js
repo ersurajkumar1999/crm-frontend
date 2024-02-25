@@ -8,8 +8,9 @@ import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import { Button } from '@mui/material';
+import { CalculateDateTime } from '../../../helpers/CalculateDateTime';
 
-const UserList = ({ searchResults }) => {
+const UserList = ({ users }) => {
     const [selectedIndex, setSelectedIndex] = React.useState(0);
 
     const handleListItemClick = (event, index) => {
@@ -22,7 +23,7 @@ const UserList = ({ searchResults }) => {
                 <List component="nav" aria-label="main mailbox folders" >
                     <Divider />
                     {
-                        searchResults.map((user, index) => (
+                        users.map((user, index) => (
                             <>
                                 <ListItemButton
                                     key={user._id}
@@ -33,11 +34,11 @@ const UserList = ({ searchResults }) => {
                                         <Avatar alt="Remy Sharp" src="https://avatars.githubusercontent.com/u/146355358?v=4" />
                                     </ListItemAvatar>
                                     <ListItemText
-                                        primary={user.name}
+                                        primary={user?.users[1]?.username}
                                         secondary={
                                             <>
                                                 {"this last msg"}
-                                                <ListItem disableGutters secondaryAction={'1 day ago'} ></ListItem>
+                                                <ListItem disableGutters secondaryAction={CalculateDateTime(user.updatedAt)} ></ListItem>
                                             </>
                                         }
                                     />
