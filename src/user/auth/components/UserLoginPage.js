@@ -31,8 +31,8 @@ const UserLoginPage = () => {
     success: null
   });
   const initialValues = {
-    email: "surajkumar1999@gmail.om",
-    password: "surajkumar1999@",
+    email: "demo3030@gmail.com",
+    password: "demo3030",
     rememberMe: false,
   };
   const {

@@ -9,6 +9,7 @@ import DoneIcon from '@mui/icons-material/Done';
 import { Link } from 'react-router-dom';
 import { getMyReceivedConnections } from '../../../services/CommonService';
 import { CalculateDateTime } from '../../../helpers/CalculateDateTime';
+import { acceptRequest } from '../../../services/ConnectionService';
 
 
 const InvitationReceived = () => {
@@ -64,7 +65,18 @@ const InvitationReceived = () => {
         if (node) observer.current.observe(node);
     }, [loading, data.length]);
 
-    console.log("users==>", users);
+    const InvitationAccept = async (userId, index) => {
+        try {
+            
+            const response = await acceptRequest({ friendId: userId });
+            if (response.status) {
+                console.log("response==>",response);
+            }
+        } catch (error) {
+            console.log("error==>", error);
+        }
+        console.log("handleUserConnection", userId);
+    }
     return (
         <Box sx={{ flexGrow: 1, width: '100%' }}>
             <Grid container spacing={2}>
@@ -89,6 +101,7 @@ const InvitationReceived = () => {
                                                 <CloseIcon />
                                             </IconButton>
                                             <IconButton edge="end" aria-label="delete"
+                                                onClick={() => InvitationAccept(user.requester._id)}
                                                 sx={{
                                                     background: 'rgba(98, 62, 9, 0.6)',
                                                     color: 'white',
