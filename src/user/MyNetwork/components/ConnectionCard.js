@@ -59,7 +59,7 @@ const ConnectionCard = ({ users, handleUserConnection }) => {
                                     {
                                         checkFriendsRequest(user) ? (
                                             <>
-                                                <Button sx={{ width: '50%', backgroundColor: '#a4a4a4' }} variant="contained" onClick={() => handleUserConnection(user._id, index)} startIcon={<AccessAlarmIcon />}> Pending</Button>
+                                                <Button size="small" sx={{ width: '50%', backgroundColor: '#a4a4a4' }} variant="contained" onClick={() => handleUserConnection(user._id, index)} startIcon={<AccessAlarmIcon />}> Pending</Button>
                                                 <Button size="small" sx={{ width: '50%' }} variant="outlined" ><AddIcon /> Connect</Button>
                                             </>
                                         ) : (

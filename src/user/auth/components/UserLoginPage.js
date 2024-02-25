@@ -8,8 +8,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import CircularProgress from '@mui/material/CircularProgress'; // Import CircularProgress component
-
+import CircularProgress from '@mui/material/CircularProgress';
 import { useFormik } from "formik";
 import { loginSchema } from '../../../schemas/FormSchemas';
 import { Avatar } from '@mui/material';
@@ -17,12 +16,16 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { userLogin } from '../../../services/ApiService';
 import { ErrorMessage, SuccessMessage } from '../../../components/common/AlertMessages';
 import { AuthContext } from '../../../contexts/AuthContext';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 const UserLoginPage = () => {
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
 
-  
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePasswordVisibility = () => setShowPassword(!showPassword);
+
   const [alertMessages, setAlertMessages] = useState({
     error: null,
     success: null
@@ -49,7 +52,6 @@ const UserLoginPage = () => {
         rememberMe: values.rememberMe
       };
       try {
-        // Start submitting
         setSubmitting(true);
         const response = await userLogin(data);
         if (response.status) {
@@ -64,7 +66,6 @@ const UserLoginPage = () => {
       } catch (error) {
         setAlertMessages({ error: error, success: null });
       } finally {
-        // Finish submitting
         setSubmitting(false);
       }
     },
@@ -122,14 +123,21 @@ const UserLoginPage = () => {
             label="Password"
             id="password"
             autoComplete="current-password"
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             value={values.password}
             onBlur={handleBlur}
             onChange={handleChange}
             inputProps={{}}
             error={touched.email && !!errors.password}
             helperText={touched.email && errors.password}
-            disabled={isSubmitting} // Disable field while submitting
+            disabled={isSubmitting}
+            InputProps={{
+              endAdornment: (
+                <Button onClick={togglePasswordVisibility} disableRipple>
+                  {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                </Button>
+              ),
+            }}
           />
           <FormControlLabel
             control={
@@ -138,7 +146,7 @@ const UserLoginPage = () => {
                 onChange={handleChange}
                 name="rememberMe"
                 color="primary"
-                disabled={isSubmitting} // Disable checkbox while submitting
+                disabled={isSubmitting}
               />
             }
             label="Remember me"
@@ -148,9 +156,9 @@ const UserLoginPage = () => {
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
-            disabled={isSubmitting} // Disable button while submitting
+            disabled={isSubmitting}
           >
-            {isSubmitting ? <CircularProgress size={24} /> : 'Sign In'} {/* Show loader when submitting */}
+            {isSubmitting ? <CircularProgress size={24} /> : 'Sign In'}
           </Button>
           <Grid container>
             <Grid item xs>

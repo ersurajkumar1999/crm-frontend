@@ -124,8 +124,8 @@ const MyNetwork = () => {
                         <Card>
                             <CardHeader
                                 sx={headerSX}
-                                title={<Typography variant="h6" component="h6"> Manage invitations</Typography>}
-                                action={<Button variant="outlined" startIcon={<SettingsIcon />} onClick={() => navigate('/invitation-manager')}> Manage</Button>} // include the header action here
+                                title={<Typography variant="h6" component="h6">Invitations</Typography>}
+                                action={<Button size="small" variant="outlined" startIcon={<SettingsIcon />} onClick={() => navigate('/invitation-manager')}> Manage</Button>} // include the header action here
                             />
                         </Card>
                     </Grid>

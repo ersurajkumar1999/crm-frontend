@@ -1,11 +1,8 @@
-import { useNavigate } from "react-router-dom";
 import {
-    Grid, Card, Typography, CardHeader, Button, Box,
+    Grid, Card, Typography, CardHeader,Box,
     Tab
 } from "../../librarys/MUILibrary";
 import { TabContext, TabList, TabPanel, } from '@mui/lab';
-
-import SettingsIcon from '@mui/icons-material/Settings';
 import { useState } from "react";
 import InvitationReceived from "./components/InvitationReceived";
 import InvitationSend from "./components/InvitationSend";
@@ -13,7 +10,6 @@ const headerSX = {
     '& .MuiCardHeader-action': { mr: 0 }
 };
 const ManagerInvitation = () => {
-    const navigate = useNavigate();
     const [value, setValue] = useState('1');
     return (
         <Grid container spacing={3}>
@@ -22,7 +18,6 @@ const ManagerInvitation = () => {
                     <CardHeader
                         sx={headerSX}
                         title={<Typography variant="h6" component="h6"> Manage invitations</Typography>}
-                        action={<Button variant="outlined" startIcon={<SettingsIcon />} onClick={() => navigate('/invitation-manager')}> Manage</Button>} // include the header action here
                     />
                 </Card>
             </Grid>
